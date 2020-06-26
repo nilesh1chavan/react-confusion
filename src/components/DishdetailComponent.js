@@ -1,0 +1,64 @@
+import React from "react";
+import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
+
+function RenderDish({ displayDish }) {
+  if (displayDish != null) {
+    return (
+      <div className="col-12 col-md-5 m-1">
+        <Card>
+          <CardImg top src={displayDish.image} alt={displayDish.name} />
+          <CardBody>
+            <CardTitle>{displayDish.name}</CardTitle>
+            <CardText>{displayDish.description}</CardText>
+          </CardBody>
+        </Card>
+      </div>
+    );
+  } else {
+    return <div></div>;
+  }
+}
+
+function RenderComments({ comments }) {
+  if (comments != null) {
+    return (
+      <div className="col-12 col-md-5 m-1">
+        <h4>Comments</h4>
+        <ul className="list-unstyled">
+          {comments.map((comment) => {
+            return (
+              <li key={comment.id}>
+                <p>{comment.comment}</p>
+                <p>
+                  -- {comment.author},
+                  {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "2-digit" }).format(
+                    new Date(Date.parse(comment.date))
+                  )}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  } else {
+    return <div></div>;
+  }
+}
+
+const Dishdetail = (props) => {
+  if (props.dish != null) {
+    return (
+      <div className="container">
+        <div className="row">
+          <RenderDish displayDish={props.dish} />
+          <RenderComments comments={props.dish.comments} />
+        </div>
+      </div>
+    );
+  } else {
+    return <div></div>;
+  }
+};
+
+export default Dishdetail;
