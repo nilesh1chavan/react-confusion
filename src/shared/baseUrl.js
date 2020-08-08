@@ -1,1 +1,1 @@
-export default baseUrl = "/assets/images";
+export const baseUrl = "http://localhost:3001/";
