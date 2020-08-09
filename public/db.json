@@ -201,6 +201,30 @@
       "comment": "It's your birthday, we're gonna party!",
       "author": "25 Cent",
       "date": "2011-12-02T17:57:28.556094Z"
+    },
+    {
+      "dishId": 0,
+      "author": "Nilesh",
+      "rating": "4",
+      "comment": "Test add comment",
+      "date": "2020-08-09T02:33:13.824Z",
+      "id": 20
+    },
+    {
+      "dishId": 0,
+      "author": "Sarika",
+      "rating": "5",
+      "comment": "Test comment",
+      "date": "2020-08-09T02:37:57.234Z",
+      "id": 21
+    },
+    {
+      "dishId": 0,
+      "author": "Test",
+      "rating": "3",
+      "comment": "test",
+      "date": "2020-08-09T02:42:10.491Z",
+      "id": 22
     }
   ],
   "promotions": [
