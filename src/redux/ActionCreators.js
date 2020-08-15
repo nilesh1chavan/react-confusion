@@ -148,7 +148,7 @@ export const addPromos = (promos) => ({
 });
 
 export const fetchLeaders = () => (dispatch) => {
-  return fetch(baseUrl + "leaderss")
+  return fetch(baseUrl + "leaders")
     .then(
       (response) => {
         if (response.ok) {
@@ -215,7 +215,9 @@ export const postFeedback = (firstname, lastname, telnum, email, agree, contactT
       }
     )
     .then((response) => response.json())
-    .then((response) => dispatch(addFeedback(response)))
+    .then((response) => {
+      alert("Thank you for your feedback!\n" + JSON.stringify(response));
+    })
     .catch((error) => {
       console.log("post feedback ", error.message);
       alert("Your feedback could not be posted\nError: " + error.message);
