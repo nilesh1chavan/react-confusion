@@ -146,3 +146,78 @@ export const addPromos = (promos) => ({
   type: ActionTypes.ADD_PROMOS,
   payload: promos
 });
+
+export const fetchLeaders = () => (dispatch) => {
+  return fetch(baseUrl + "leaderss")
+    .then(
+      (response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error("Error" + response.status + ": " + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      (error) => {
+        var errMess = new Error(error.message);
+        throw errMess;
+      }
+    )
+    .then((response) => response.json())
+    .then((leaders) => dispatch(addLeaders(leaders)))
+    .catch((error) => dispatch(leadersFailed(error.message)));
+};
+
+export const addLeaders = (leaders) => ({
+  type: ActionTypes.ADD_LEADERS,
+  payload: leaders
+});
+
+export const leadersLoading = () => ({
+  type: ActionTypes.LEADERS_LOADING
+});
+
+export const leadersFailed = (errMess) => ({
+  type: ActionTypes.LEADERS_FAILED,
+  payload: errMess
+});
+
+export const addFeedback = (comment) => ({
+  type: ActionTypes.ADD_COMMENT,
+  payload: comment
+});
+
+export const postFeedback = (firstname, lastname, telnum, email, agree, contactType, message) => (dispatch) => {
+  const newFeedback = { firstname, lastname, telnum, email, agree, contactType, message };
+  newFeedback.date = new Date().toISOString();
+  return fetch(baseUrl + "feedback", {
+    method: "POST",
+    body: JSON.stringify(newFeedback),
+    headers: {
+      "Content-type": "application/json"
+    },
+    credentials: "same-origin"
+  })
+    .then(
+      (response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error("Error" + response.status + ": " + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      (error) => {
+        var errMess = new Error(error.message);
+        throw errMess;
+      }
+    )
+    .then((response) => response.json())
+    .then((response) => dispatch(addFeedback(response)))
+    .catch((error) => {
+      console.log("post feedback ", error.message);
+      alert("Your feedback could not be posted\nError: " + error.message);
+    });
+};

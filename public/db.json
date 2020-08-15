@@ -225,6 +225,14 @@
       "comment": "test",
       "date": "2020-08-09T02:42:10.491Z",
       "id": 22
+    },
+    {
+      "dishId": 3,
+      "author": "Nilesh",
+      "rating": "2",
+      "comment": "Test",
+      "date": "2020-08-15T01:48:39.123Z",
+      "id": 23
     }
   ],
   "promotions": [
@@ -287,6 +295,17 @@
       "message": "afadsfds",
       "date": "2017-12-04T09:41:49.890Z",
       "id": 1
+    },
+    {
+      "firstname": "Nilesh",
+      "lastname": "Chavan",
+      "telnum": "2323",
+      "email": "wadekarsarika9@gmail.com",
+      "agree": true,
+      "contactType": "Email",
+      "message": "test feedback",
+      "date": "2020-08-15T01:54:07.247Z",
+      "id": 2
     }
   ]
 }
